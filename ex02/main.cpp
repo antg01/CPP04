@@ -6,7 +6,7 @@
 /*   By: angerard <angerard@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 15:11:44 by angerard          #+#    #+#             */
-/*   Updated: 2025/02/21 15:14:23 by angerard         ###   ########.fr       */
+/*   Updated: 2025/05/05 13:15:29 by angerard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int main()
 {
     const AAnimal* animals[10];
 
-    // Remplir la moitié avec des chiens et l'autre avec des chats
     for (int i = 0; i < 2; i++)
         animals[i] = new Dog();
     std::cout << "------------" << std::endl;
@@ -28,17 +27,15 @@ int main()
         animals[i] = new Cat();
     std::cout << "------------" << std::endl;
 
-    // Appel de makeSound() pour vérifier le polymorphisme
     for (int i = 0; i < 4; i++)
         animals[i]->makeSound();
     std::cout << "------------" << std::endl;
 
-    // Suppression des objets
     for (int i = 0; i < 4; i++)
         delete animals[i];
     std::cout << "------------" << std::endl;
 
-    // Test des copies profondes
+    // deeep copies test
     Dog originalDog;
     originalDog.makeSound();
     std::cout << "------------" << std::endl;
