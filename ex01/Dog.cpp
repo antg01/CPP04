@@ -6,7 +6,7 @@
 /*   By: angerard <angerard@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 10:46:43 by angerard          #+#    #+#             */
-/*   Updated: 2025/02/21 10:54:38 by angerard         ###   ########.fr       */
+/*   Updated: 2025/05/05 11:10:35 by angerard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,21 @@ Dog::~Dog()
 void Dog::makeSound() const
 {
     std::cout << "je woof bien là" << std::endl;
+}
+
+void Dog::setIdea(int i, const std::string &idea)
+{
+    if (brain != NULL)
+    {
+        brain->setIdea(i, idea);
+    }
+}
+
+std::string Dog::getIdea(int i) const
+{
+    if (brain != NULL)
+    {
+        return brain->getIdea(i);
+    }
+    return "";
 }

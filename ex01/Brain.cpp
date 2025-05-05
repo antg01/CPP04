@@ -6,7 +6,7 @@
 /*   By: angerard <angerard@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 10:35:53 by angerard          #+#    #+#             */
-/*   Updated: 2025/02/21 10:44:24 by angerard         ###   ########.fr       */
+/*   Updated: 2025/05/05 11:02:46 by angerard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Brain::Brain(const Brain &other)
 Brain &Brain::operator=(const Brain &other)
 {
     if (this != &other) {
-        for (int i = 0; i < 0; i++) {
+        for (int i = 0; i < 100; i++) {
             ideas[i] = other.ideas[i];
         }
     }

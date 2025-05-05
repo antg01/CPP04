@@ -6,7 +6,7 @@
 /*   By: angerard <angerard@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 10:45:32 by angerard          #+#    #+#             */
-/*   Updated: 2025/02/21 10:45:47 by angerard         ###   ########.fr       */
+/*   Updated: 2025/05/05 11:10:15 by angerard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ public:
     ~Dog();
 
     void makeSound() const;
+    void setIdea(int i, const std::string &idea);
+    std::string getIdea(int i) const;
+
 };
 
 #endif

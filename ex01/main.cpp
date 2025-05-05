@@ -6,7 +6,7 @@
 /*   By: angerard <angerard@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 11:01:48 by angerard          #+#    #+#             */
-/*   Updated: 2025/02/21 11:26:56 by angerard         ###   ########.fr       */
+/*   Updated: 2025/05/05 11:13:00 by angerard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,38 +15,71 @@
 #include "Cat.hpp"
 #include "Brain.hpp"
 
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+
 int main()
 {
-    const Animal* animals[10];
+    const int size = 4;
+    const Animal* animals[size];
 
-    // Remplir la moitié avec des chiens et l'autre avec des chats
-    for (int i = 0; i < 2; i++)
+    int i = 0;
+    while (i < size / 2)
+    {
         animals[i] = new Dog();
-    std::cout << "------------" << std::endl;
-
-    for (int i = 2; i < 4; i++)
+        i = i + 1;
+    }
+    while (i < size)
+    {
         animals[i] = new Cat();
-    std::cout << "------------" << std::endl;
+        i = i + 1;
+    }
 
-    // Suppression et appel des destructeurs
-    for (int i = 0; i < 4; i++)
+    std::cout << "------------ DELETION -----------" << std::endl;
+
+    i = 0;
+    while (i < size)
+    {
         delete animals[i];
-    std::cout << "------------" << std::endl;
+        i = i + 1;
+    }
 
-    // Test des copies profondes
-    Dog originalDog;
-    originalDog.makeSound();
+    std::cout << "------------ DEEP COPY TEST -----------" << std::endl;
 
-    Dog copiedDog = originalDog;
-    copiedDog.makeSound();
-    std::cout << "------------" << std::endl;
+    Dog basicDog;
+    basicDog.makeSound();
+    basicDog.getType();
+
+    basicDog.setIdea(0, "Tue le chat");
+    basicDog.setIdea(1, "creuse un trou");
+
+    Dog copiedDog;
+    copiedDog = basicDog;
+
+    std::cout << "Original Dog Idea 0: " << basicDog.getIdea(0) << std::endl;
+    std::cout << "Copied Dog Idea 0: " << copiedDog.getIdea(0) << std::endl;
+
+    copiedDog.setIdea(0, "je veux miam");
+
+    std::cout << "Modified Copied Dog Idea 0: " << copiedDog.getIdea(0) << std::endl;
+    std::cout << "Original Dog Idea 0 (should be unchanged): " << basicDog.getIdea(0) << std::endl;
+
+    std::cout << "------------ CAT DEEP COPY TEST -----------" << std::endl;
 
     Cat originalCat;
-    originalCat.makeSound();
+    originalCat.setIdea(0, "je veux dodo");
 
-    Cat copiedCat = originalCat;
-    copiedCat.makeSound();
-    std::cout << "------------" << std::endl;
+    Cat copyCat(originalCat);
+
+    std::cout << "Original Cat Idea 0: " << originalCat.getIdea(0) << std::endl;
+    std::cout << "Copy Cat Idea 0: " << copyCat.getIdea(0) << std::endl;
+
+    copyCat.setIdea(0, "Tue la souris");
+
+    std::cout << "Modified Copy Cat Idea 0: " << copyCat.getIdea(0) << std::endl;
+    std::cout << "Original Cat Idea 0 (should be unchanged): " << originalCat.getIdea(0) << std::endl;
 
     return 0;
 }
+
